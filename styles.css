@@ -1,3 +1,6 @@
+
+/* Fix: Sticky-Headline Leistungen kompakter, damit sie nicht in die rechte Spalte läuft */
+.services-layout .services-sticky h2 { font-size: clamp(2.2rem, 4.6vw, 4.4rem); }
 /* ==========================================================================
    PRÄVENTA — Designsystem
    Sicherheit mit Haltung. Prävention mit Wirkung.
