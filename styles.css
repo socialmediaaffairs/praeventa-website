@@ -1138,6 +1138,7 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
 .mission-title .hl {
   position: static;
   white-space: normal;
+  display: inline;
   padding: 0.04em 0.18em;
   background: linear-gradient(var(--green), var(--green)) left center / 0% 100% no-repeat;
   -webkit-box-decoration-break: clone;
