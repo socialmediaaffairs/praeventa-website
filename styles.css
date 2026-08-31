@@ -1161,3 +1161,6 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
   }
   .main-nav .btn { font-size: 1.15rem; padding: 0.9rem 1.8rem; }
 }
+/* Refinements v3: Hero — Headline-Größe & Szene entkoppeln (keine Grün-auf-Grün-Kollision) */
+:root { --display-xl: clamp(3rem, 9.5vw, 9rem); }
+.hero-scene { width: min(40vw, 560px); }
