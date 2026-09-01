@@ -1132,3 +1132,7 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
   .site-header, .cookie-banner, .cursor-dot, .hero-scroll-hint { display: none !important; }
   body { background: #fff; }
 }
+
+/* Refinements v3: Hero — Headline-Größe & Szene entkoppeln (keine Grün-auf-Grün-Kollision) */
+:root { --display-xl: clamp(3rem, 8.6vw, 8.2rem); }
+.hero-scene { width: min(40vw, 560px); }
