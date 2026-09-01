@@ -1132,35 +1132,3 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
   .site-header, .cookie-banner, .cursor-dot, .hero-scroll-hint { display: none !important; }
   body { background: #fff; }
 }
-/* ==========================================================================
-   Refinements v2: Mission-Highlights mehrzeilig + Mobile-Menü sauber verstecken
-   ========================================================================== */
-.mission-title .hl {
-  position: static;
-  white-space: normal;
-  display: inline;
-  padding: 0.04em 0.18em;
-  background: linear-gradient(var(--green), var(--green)) left center / 0% 100% no-repeat;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  border-radius: 3px;
-  transition: background-size 0.7s var(--ease-out);
-}
-.mission-title .hl::before { display: none; }
-.mission-title .hl.in-view { background-size: 100% 100%; }
-
-@media (max-width: 860px) {
-  .main-nav {
-    visibility: hidden;
-    overflow-y: auto;
-    transition: transform 0.55s var(--ease-inout), visibility 0s linear 0.55s;
-  }
-  .main-nav.is-open {
-    visibility: visible;
-    transition: transform 0.55s var(--ease-inout);
-  }
-  .main-nav .btn { font-size: 1.15rem; padding: 0.9rem 1.8rem; }
-}
-/* Refinements v3: Hero — Headline-Größe & Szene entkoppeln (keine Grün-auf-Grün-Kollision) */
-:root { --display-xl: clamp(3rem, 8.6vw, 8.2rem); }
-.hero-scene { width: min(40vw, 560px); }
