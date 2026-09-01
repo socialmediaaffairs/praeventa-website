@@ -1148,3 +1148,35 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
 @media (min-width: 861px) {
   .site-header .main-nav .btn { padding-inline: 2.6rem; }
 }
+
+/* ===== Unterseiten: Leistungs-Detail, Einsatzbereiche, FAQ ===== */
+.detail-list { display: grid; gap: clamp(2.5rem, 6vh, 4.5rem); padding-bottom: clamp(3rem, 8vh, 6rem); }
+.detail-block {
+  border-top: 1px solid var(--line);
+  padding-top: clamp(2rem, 5vh, 3.5rem);
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) 2fr;
+  gap: clamp(1.5rem, 4vw, 5rem);
+}
+.detail-block h2 { font-size: var(--display-sm); margin-top: 0.4rem; }
+@media (max-width: 860px) { .detail-block { grid-template-columns: 1fr; gap: 1rem; } }
+
+.area-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; padding-bottom: clamp(3rem, 8vh, 6rem); }
+.area-card { border: 1px solid var(--line); background: var(--white); border-radius: 6px; padding: clamp(1.4rem, 3vw, 2rem); transition: transform 0.35s var(--ease-out), border-color 0.3s; }
+.area-card:hover { transform: translateY(-4px); border-color: var(--green); }
+.area-card .audience-num { display: block; margin-bottom: 0.5rem; }
+.area-card h2 { font-size: 1.25rem; margin-bottom: 0.6rem; }
+.area-card p { font-size: 0.98rem; color: var(--anthracite); }
+@media (max-width: 760px) { .area-grid { grid-template-columns: 1fr; } }
+
+.faq-list { display: grid; gap: 0.9rem; padding-bottom: clamp(3rem, 8vh, 6rem); max-width: 52rem; }
+.faq-item { border: 1px solid var(--line); border-radius: 6px; background: var(--white); }
+.faq-item summary { cursor: pointer; list-style: none; font-weight: 700; padding: 1.15rem 1.4rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; color: var(--green-deep); font-weight: 800; font-size: 1.35rem; line-height: 1; flex: none; }
+.faq-item[open] summary::after { content: "\2013"; }
+.faq-item .faq-body { padding: 0 1.4rem 1.3rem; color: var(--anthracite); }
+
+.page-cta { background: var(--green); color: var(--white); text-align: center; padding: clamp(3rem, 8vh, 5rem) clamp(1.5rem, 5vw, 4rem); border-radius: 10px; margin-bottom: clamp(4rem, 10vh, 7rem); }
+.page-cta h2 { font-size: var(--display-sm); margin-bottom: 0.8rem; }
+.page-cta p { margin: 0 auto 1.8rem; color: rgba(255,255,255,0.92); max-width: 36rem; }
