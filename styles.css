@@ -1136,3 +1136,15 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
 /* Refinements v3: Hero — Headline-Größe & Szene entkoppeln (keine Grün-auf-Grün-Kollision) */
 :root { --display-xl: clamp(3rem, 8.6vw, 8.2rem); }
 .hero-scene { width: min(40vw, 560px); }
+
+/* Mission-Headline: kompakter, Ziel ~4 Zeilen */
+.mission-title {
+  font-size: clamp(1.7rem, 3.4vw, 3rem);
+  max-width: 30ch;
+  line-height: 1.18;
+}
+
+/* Header-CTA: mehr Luft links und rechts (nur Desktop) */
+@media (min-width: 861px) {
+  .site-header .main-nav .btn { padding-inline: 2.6rem; }
+}
