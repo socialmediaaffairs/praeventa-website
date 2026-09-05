@@ -236,7 +236,7 @@
     }
   }
 
-  /* Kontaktformular (Opt-in-Validierung) */
+  /* Kontaktformular (Opt-in-Validierung + Versand über Web3Forms) */
   const form = document.getElementById("contactForm");
   if (form) {
     form.addEventListener("submit", (e) => {
@@ -254,10 +254,38 @@
         return;
       }
 
-      /* Platzhalter: Hier den Versand anbinden (z. B. Formspree, eigener Endpoint oder mailto). */
-      status.className = "form-status ok";
-      status.textContent = "Vielen Dank für Ihre Anfrage. Wir melden uns zeitnah bei Ihnen.";
-      form.reset();
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const data = new FormData(form);
+      data.delete("privacyConsent");
+      data.set("subject", data.get("subject") || "Neue Anfrage über die PRÄVENTA-Website");
+      data.set("Datenschutz-Einwilligung", "Ja, erteilt am " + new Date().toLocaleString("de-DE"));
+
+      submitBtn.disabled = true;
+      status.className = "form-status";
+      status.textContent = "Ihre Anfrage wird gesendet …";
+
+      fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.success) {
+            status.className = "form-status ok";
+            status.textContent = "Vielen Dank für Ihre Anfrage. Wir melden uns zeitnah bei Ihnen.";
+            form.reset();
+          } else {
+            throw new Error(json.message || "Unbekannter Fehler");
+          }
+        })
+        .catch(() => {
+          status.className = "form-status err";
+          status.textContent = "Leider konnte Ihre Anfrage nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an info@praeventa-praevention.de.";
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+        });
     });
   }
 
