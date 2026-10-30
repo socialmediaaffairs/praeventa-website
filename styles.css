@@ -1403,3 +1403,16 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
   .team-mark { stroke-dashoffset: 0; opacity: 1; transition: none; }
   .team-photo img, .team-photo::before { transition: none; }
 }
+
+/* ===== Mobile-Menue: Fixes ===== */
+@media (max-width: 860px) {
+  /* X im geoeffneten Menue: hell auf dunklem Hintergrund */
+  .nav-toggle[aria-expanded="true"] span { background: var(--paper); }
+  /* CTA im Mobile-Menue: normale Buttongroesse */
+  .main-nav a.btn {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.95rem 1.8rem;
+    margin-top: 0.5rem;
+  }
+}
