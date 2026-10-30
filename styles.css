@@ -1406,13 +1406,23 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
 
 /* ===== Mobile-Menue: Fixes ===== */
 @media (max-width: 860px) {
+  /* Toggle liegt ueber dem geoeffneten Menue */
+  .nav-toggle { position: relative; z-index: 1001; }
   /* X im geoeffneten Menue: hell auf dunklem Hintergrund */
   .nav-toggle[aria-expanded="true"] span { background: var(--paper); }
+  /* Menue: kompakter, damit alle Punkte + CTA auf kleine Displays passen */
+  .main-nav {
+    gap: 1.35rem;
+    padding: 5.5rem 1.5rem 2rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .main-nav a { font-size: clamp(1.4rem, 5.5vw, 2rem); }
   /* CTA im Mobile-Menue: normale Buttongroesse */
   .main-nav a.btn {
     font-size: 1rem;
     font-weight: 700;
     padding: 0.95rem 1.8rem;
-    margin-top: 0.5rem;
+    margin-top: 0.6rem;
   }
 }
