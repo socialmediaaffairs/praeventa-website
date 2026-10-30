@@ -1283,3 +1283,123 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
 .page-cta { background: var(--green); color: var(--white); text-align: center; padding: clamp(3rem, 8vh, 5rem) clamp(1.5rem, 5vw, 4rem); border-radius: 10px; margin-bottom: clamp(4rem, 10vh, 7rem); }
 .page-cta h2 { font-size: var(--display-sm); margin-bottom: 0.8rem; }
 .page-cta p { margin: 0 auto 1.8rem; color: rgba(255,255,255,0.92); max-width: 36rem; }
+
+/* ===== Unterseite: Team ===== */
+.team-list {
+  display: grid;
+  gap: clamp(4rem, 10vh, 8rem);
+  padding-bottom: clamp(4rem, 10vh, 7rem);
+}
+.team-member {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+}
+.team-member:nth-child(even) .team-photo { order: 2; }
+.team-member:nth-child(even) .team-text { order: 1; }
+
+.team-photo {
+  position: relative;
+  max-width: 440px;
+  margin-inline: auto;
+  width: 100%;
+}
+.team-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--green);
+  border-radius: 6px;
+  transform: translate(14px, 14px);
+  transition: transform 0.9s var(--ease-out);
+  z-index: 0;
+}
+.team-member:nth-child(even) .team-photo::before { transform: translate(-14px, 14px); }
+.team-photo img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--paper-2);
+  filter: saturate(0.92);
+  transition: transform 0.9s var(--ease-out), filter 0.9s var(--ease-out);
+}
+.team-member:hover .team-photo img { transform: translate(-4px, -4px); filter: saturate(1); }
+.team-member:hover .team-photo::before { transform: translate(20px, 20px); }
+.team-member:nth-child(even):hover .team-photo::before { transform: translate(-20px, 20px); }
+
+.team-mark {
+  position: absolute;
+  z-index: 2;
+  width: 92px; height: 92px;
+  right: -28px; bottom: -22px;
+  stroke: var(--green-ink);
+  opacity: 0;
+  stroke-dasharray: 340;
+  stroke-dashoffset: 340;
+  transition: stroke-dashoffset 1.4s var(--ease-out) 0.35s, opacity 0.4s ease 0.3s;
+}
+.team-member:nth-child(even) .team-mark { right: auto; left: -28px; }
+.team-member.in-view .team-mark { opacity: 1; stroke-dashoffset: 0; }
+
+.team-num {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--green-deep);
+  margin-bottom: 1.2rem;
+}
+.team-name {
+  font-size: clamp(1.8rem, 3.6vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+.team-role {
+  font-family: var(--font-hand);
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  color: var(--green-deep);
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+}
+.team-bio {
+  color: var(--anthracite);
+  max-width: 46rem;
+  line-height: 1.65;
+}
+.team-mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--green);
+  padding-bottom: 0.2rem;
+  transition: color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+  word-break: break-all;
+}
+.team-mail .btn-arrow { transition: transform 0.5s var(--ease-out); }
+.team-mail:hover { color: var(--green-deep); border-color: var(--green-deep); }
+.team-mail:hover .btn-arrow { transform: translateX(6px); }
+
+@media (max-width: 860px) {
+  .team-member { grid-template-columns: 1fr; gap: 2rem; }
+  .team-member:nth-child(even) .team-photo,
+  .team-member:nth-child(even) .team-text { order: initial; }
+  .team-photo { max-width: 360px; margin-inline: 0; }
+  .team-member:nth-child(even) .team-photo::before { transform: translate(14px, 14px); }
+  .team-member:nth-child(even) .team-mark { left: auto; right: -20px; }
+  .team-mark { width: 72px; height: 72px; right: -20px; bottom: -16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .team-mark { stroke-dashoffset: 0; opacity: 1; transition: none; }
+  .team-photo img, .team-photo::before { transition: none; }
+}
